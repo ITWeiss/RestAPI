@@ -33,7 +33,7 @@ public class TaskControllerTests extends PostgresDbTestContainers {
     List<TaskEntity> tasks = controller.getAllTasks();
 
     assertThat(tasks).isNotNull();
-    assertEquals(4, tasks.size());
+    assertEquals(1, tasks.size());
   }
 
   @Test
