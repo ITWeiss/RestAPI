@@ -33,16 +33,16 @@ public class TaskControllerTests extends PostgresDbTestContainers {
     List<TaskEntity> tasks = controller.getAllTasks();
 
     assertThat(tasks).isNotNull();
-    assertEquals(1, tasks.size());
+    assertEquals(4, tasks.size());
   }
 
   @Test
   @DisplayName("Получение задачи по id")
   void testGetTaskById() {
-    TaskEntity task = controller.getById(4L).getBody();
+    TaskEntity task = controller.getById(3L).getBody();
 
     assertThat(task).isNotNull();
-    assertEquals(4, task.getId());
+    assertEquals(3, task.getId());
     assertEquals("Check style", task.getTitle());
     assertEquals("Add a maven style check", task.getDescription());
     assertEquals(true, task.getCompleted());
@@ -64,12 +64,12 @@ public class TaskControllerTests extends PostgresDbTestContainers {
   @Test
   @DisplayName("Полное обновление задачи")
   void testUpdateTask() {
-    TaskEntity task = controller.getById(3L).getBody();
+    TaskEntity task = controller.getById(2L).getBody();
     task.setTitle("API");
     task.setDescription("Move the api to a separate class");
     task.setCompleted(true);
 
-    ResponseEntity<TaskEntity> responseEntity = controller.update(3L, task);
+    ResponseEntity<TaskEntity> responseEntity = controller.update(2L, task);
 
     assertThat(responseEntity).isNotNull();
   }
@@ -95,6 +95,4 @@ public class TaskControllerTests extends PostgresDbTestContainers {
     assertThat(responseEntity).isNotNull();
     assertEquals(200, responseEntity.getStatusCodeValue());
   }
-
-
 }

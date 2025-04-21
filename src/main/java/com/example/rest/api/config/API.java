@@ -7,8 +7,7 @@ package com.example.rest.api.config;
  */
 public class API {
 
-  public API() {
-  }
+  private API() {}
 
   public static final String TASKS = "/tasks";
   public static final String TASKS_BY_ID = "/{id}";
